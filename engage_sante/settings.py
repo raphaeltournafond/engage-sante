@@ -119,7 +119,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+
+# App specific static files
 STATIC_URL = 'static/'
+
+# Static files when deploying
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Extra directory for global static files
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
