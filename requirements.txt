@@ -1,0 +1,8 @@
+# Django
+Django==5.0.6
+
+# To read dotenv files
+python-dotenv==1.0.1
+
+# Postgres
+psycopg2-binary==2.9.9
