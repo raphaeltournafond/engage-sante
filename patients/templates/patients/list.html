@@ -7,7 +7,10 @@
     <h1>Liste des Patients</h1>
     <ul>
         {% for patient in patients %}
-            <li>{{ patient.id }} - {{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}</li>
+            <li>
+                {{ patient.id }} - {{ patient.last_name }} {{ patient.first_name }} - {{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}
+                <a href="{% url 'update_utilisateur' patient.id %}">Modifier</a>
+            </li>
         {% endfor %}
     </ul>
 </body>
