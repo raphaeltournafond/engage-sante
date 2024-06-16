@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Utilisateur
 
-BASE_FIELDS = ('username', 'last_name', 'first_name', 'email', 'rue', 'cp', 'ville')
+BASE_FIELDS = ('last_name', 'first_name', 'email', 'rue', 'cp', 'ville')
 
 class UtilisateurUpdateForm(UserChangeForm):
     rue = forms.CharField(required=True)

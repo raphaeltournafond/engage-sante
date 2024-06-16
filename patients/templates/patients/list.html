@@ -5,10 +5,12 @@
 </head>
 <body>
     <h1>Liste des Patients</h1>
+    <a href="{% url 'register_patient' %}">Ajouter</a>
     <ul>
         {% for patient in patients %}
             <li>
                 {{ patient.id }} - {{ patient.last_name }} {{ patient.first_name }} - {{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}
+                Identifiant unique : {{patient.username}}
                 <a href="{% url 'update_utilisateur' patient.id %}">Modifier</a>
             </li>
         {% endfor %}
