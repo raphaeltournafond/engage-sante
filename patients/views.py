@@ -1,5 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .forms import PatientCreationForm, MedecinCreationForm, UtilisateurUpdateForm
 from .models import Utilisateur
 
@@ -30,6 +33,17 @@ def delete_utilisateur(request, user_id):
         return redirect('list_patients')
     return render(request, 'patients/delete.html', {'patient': patient})
 
+class CustomLoginView(LoginView):
+    template_name = 'patients/login.html'
+    
+    def form_valid(self, form):
+        user = form.get_user()
+        login(self.request, user)
+        return HttpResponseRedirect(self.get_success_url(user))
+
+    def get_success_url(self, user):
+        return reverse('info_utilisateur', kwargs={'user_id': user.id})
+    
 def register_patient(request):
     if request.method == 'POST':
         form = PatientCreationForm(request.POST)
