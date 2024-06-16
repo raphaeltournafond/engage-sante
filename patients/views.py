@@ -19,6 +19,13 @@ def update_utilisateur(request, user_id):
         form = UtilisateurUpdateForm(instance=patient)
     return render(request, 'patients/update.html', {'form': form, 'patient': patient})
 
+def delete_utilisateur(request, user_id):
+    patient = get_object_or_404(Utilisateur, id=user_id)
+    if request.method == 'POST':
+        patient.delete()
+        return redirect('list_patients')
+    return render(request, 'patients/delete.html', {'patient': patient})
+
 def register_patient(request):
     if request.method == 'POST':
         form = PatientCreationForm(request.POST)

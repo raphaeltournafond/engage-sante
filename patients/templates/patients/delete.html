@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supprimer Patient</title>
+</head>
+<body>
+    <h1>Supprimer Patient</h1>
+    <p>Êtes-vous sûr de vouloir supprimer {{ patient.last_name }} {{ patient.first_name }} ({{ patient.username }}) ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+    </form>
+    <a href="{% url 'list_patients' %}">Annuler</a>
+</body>
+</html>
