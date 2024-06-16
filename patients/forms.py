@@ -12,13 +12,13 @@ class CustomUtilisateurCreationForm(UserCreationForm):
         fields = ('username', 'email', 'rue', 'cp', 'ville')
 
 class PatientCreationForm(CustomUtilisateurCreationForm):
-    is_medecin = forms.BooleanField(initial=True, widget=forms.HiddenInput())
+    is_medecin = forms.BooleanField(initial=False, required=False, widget=forms.HiddenInput())
 
     class Meta(CustomUtilisateurCreationForm.Meta):
         fields = CustomUtilisateurCreationForm.Meta.fields + ('is_medecin',)
 
 class MedecinCreationForm(CustomUtilisateurCreationForm):
-    is_medecin = forms.BooleanField(initial=False, widget=forms.HiddenInput())
+    is_medecin = forms.BooleanField(initial=True, required=False, widget=forms.HiddenInput())
 
     class Meta(CustomUtilisateurCreationForm.Meta):
         fields = CustomUtilisateurCreationForm.Meta.fields + ('is_medecin',)
