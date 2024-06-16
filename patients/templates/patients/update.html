@@ -4,13 +4,13 @@
     <title>Modifier Utilisateur</title>
   </head>
   <body>
-    <h1>Modifier Utilisateur</h1>
+    <h1>Modifier un Utilisateur</h1>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Enregistrer les modifications</button>
     </form>
     <a href="{% url 'list_patients' %}">Annuler</a>
-    <a href="{% url 'delete_utilisateur' patient.id %}">Supprimer</a>
+    <a href="{% url 'delete_utilisateur' utilisateur.id %}">Supprimer</a>
   </body>
 </html>

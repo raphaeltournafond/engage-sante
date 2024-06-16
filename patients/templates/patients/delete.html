@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Supprimer Patient</title>
+    <title>Supprimer Utilisateur</title>
   </head>
   <body>
-    <h1>Supprimer Patient</h1>
-    <p>Êtes-vous sûr de vouloir supprimer {{ patient.last_name }} {{ patient.first_name }} ({{ patient.username }}) ?</p>
+    <h1>Supprimer un Utilisateur</h1>
+    <p>Êtes-vous sûr de vouloir supprimer {{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.username }} ?</p>
     <form method="post">
       {% csrf_token %}
       <button type="submit">Supprimer</button>
