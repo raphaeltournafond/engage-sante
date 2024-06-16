@@ -6,8 +6,19 @@ class CustomUtilisateurCreationForm(UserCreationForm):
     rue = forms.CharField(required=True)
     cp = forms.CharField(required=True)
     ville = forms.CharField(required=True)
-    is_medecin = forms.BooleanField(initial=False, required=False)
 
     class Meta:
         model = Utilisateur
-        fields = ('username', 'email', 'rue', 'cp', 'ville', 'is_medecin')
+        fields = ('username', 'email', 'rue', 'cp', 'ville')
+
+class PatientCreationForm(CustomUtilisateurCreationForm):
+    is_medecin = forms.BooleanField(initial=True, widget=forms.HiddenInput())
+
+    class Meta(CustomUtilisateurCreationForm.Meta):
+        fields = CustomUtilisateurCreationForm.Meta.fields + ('is_medecin',)
+
+class MedecinCreationForm(CustomUtilisateurCreationForm):
+    is_medecin = forms.BooleanField(initial=False, widget=forms.HiddenInput())
+
+    class Meta(CustomUtilisateurCreationForm.Meta):
+        fields = CustomUtilisateurCreationForm.Meta.fields + ('is_medecin',)
