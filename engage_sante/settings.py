@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'patients',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,8 @@ DATABASES = {
         'PORT': os.getenv('POSTGRES_PORT', ''), # If left empty default port is 5432
     }
 }
+
+AUTH_USER_MODEL = "patients.Utilisateur"
 
 
 # Password validation
