@@ -9,6 +9,14 @@
       <p>Votre nom d'utilisateur et mot de passe sont incorrects. Veuillez réessayer.</p>
     {% endif %}
 
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p>Votre compte n'a pas accès à cette page. Pour la visualiser connectez vous avec un compte ayant les permissions nécessaires.</p>
+      {% else %}
+        <p>Merci de vous connecter pour accéder à cette page.</p>
+      {% endif %}
+    {% endif %}
+
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
       <table>
@@ -23,6 +31,7 @@
       </table>
 
       <input type="submit" value="login" />
+      <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
     <p>

@@ -8,6 +8,10 @@ def list_patients(request):
     patients = Utilisateur.objects.filter(is_medecin=False, is_staff=False, is_superuser=False)
     return render(request, 'patients/list.html', {'patients': patients})
 
+def info_utilisateur(request, user_id):
+    utilisateur = get_object_or_404(Utilisateur, id=user_id)
+    return render(request, 'patients/info.html', {'utilisateur': utilisateur})
+
 def update_utilisateur(request, user_id):
     patient = get_object_or_404(Utilisateur, id=user_id)
     if request.method == 'POST':
