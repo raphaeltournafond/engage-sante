@@ -11,7 +11,7 @@ def register_patient(request):
             return redirect('home')
     else:
         form = PatientCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'patients/register.html', {'form': form})
 
 def register_medecin(request):
     if request.method == 'POST':
@@ -22,4 +22,4 @@ def register_medecin(request):
             return redirect('home')
     else:
         form = MedecinCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'patients/register.html', {'form': form})
