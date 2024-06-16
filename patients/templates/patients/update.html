@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Modifier Patient</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Modifier Patient</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Enregistrer les modifications</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enregistrer les modifications</button>
     </form>
     <a href="{% url 'list_patients' %}">Annuler</a>
-    <a href="{% url 'delete_utilisateur' patient.id%}">Supprimer</a>
-</body>
+    <a href="{% url 'delete_utilisateur' patient.id %}">Supprimer</a>
+  </body>
 </html>
