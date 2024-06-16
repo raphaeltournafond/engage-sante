@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modifier Patient</title>
+</head>
+<body>
+    <h1>Modifier Patient</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+    <a href="{% url 'list_patients' %}">Annuler</a>
+</body>
+</html>
