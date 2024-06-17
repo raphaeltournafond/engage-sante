@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Information Utilisateur</title>
-  </head>
-  <body>
-    <h1>Informations de l'utilisateur</h1>
-    <p>{{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.rue }}, {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
-    <p>Identifiant unique : {{ utilisateur.username }}</p>
-  </body>
-</html>
+{% extends 'patients/base.html' %}
+
+{% block title %}
+  Information Utilisateur
+{% endblock %}
+
+{% block content %}
+  <h1>Informations de l'utilisateur</h1>
+  <p>{{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.rue }}, {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
+  <p>Identifiant unique : {{ utilisateur.username }}</p>
+{% endblock %}

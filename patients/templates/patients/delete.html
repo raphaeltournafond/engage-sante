@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Supprimer Utilisateur</title>
-  </head>
-  <body>
-    <h1>Supprimer un Utilisateur</h1>
-    <p>Êtes-vous sûr de vouloir supprimer {{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.username }} ?</p>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit">Supprimer</button>
-    </form>
-    <a href="{% url 'list_patients' %}">Annuler</a>
-  </body>
-</html>
+{% extends 'patients/base.html' %}
+
+{% block title %}
+Supprimer Utilisateur
+{% endblock %}
+
+{% block content %}
+  <h1>Supprimer un Utilisateur</h1>
+  <p>Êtes-vous sûr de vouloir supprimer {{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.username }} ?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Supprimer</button>
+  </form>
+  <a href="{% url 'list_patients' %}">Annuler</a>
+{% endblock %}
