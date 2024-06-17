@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Modifier Utilisateur</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   </head>
   <body>
     <h1>Modifier un Utilisateur</h1>
@@ -12,5 +13,35 @@
     </form>
     <a href="{% url 'list_patients' %}">Annuler</a>
     <a href="{% url 'delete_utilisateur' utilisateur.id %}">Supprimer</a>
+
+
+    <label for="codePostal">Enter Postal Code:</label>
+    <input type="text" id="codePostal" name="codePostal">
+    <label for="communes">Communes:</label>
+    <select id="communes" name="communes"></select>
+
+    <!-- Script pour mettre à jour les champs avec geo api -->
+    <script>
+      $(document).ready(function () {
+        $('#codePostal').on('input', function () {
+          var codePostal = $(this).val()
+          if (codePostal.length >= 5) {
+            $.ajax({
+              url: `https://geo.api.gouv.fr/communes?codePostal=${codePostal}&limit=5`,
+              method: 'GET',
+              success: function (data) {
+                $('#communes').empty() // Clear the previous options
+                data.forEach(function (commune) {
+                  $('#communes').append(new Option(commune.nom, commune.codesPostaux[0]))
+                })
+              },
+              error: function (error) {
+                console.error('Error fetching data', error)
+              }
+            })
+          }
+        })
+      })
+    </script>
   </body>
 </html>
