@@ -17,38 +17,5 @@
     </form>
     <a href="{% url 'list_patients' %}">Annuler</a>
     <a href="{% url 'delete_utilisateur' utilisateur.id %}">Supprimer</a>
-
-    <label for="communes">Communes:</label>
-    <select id="communes" name="communes"></select>
-
-    <!-- Script pour mettre à jour les champs avec geo api -->
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#id_cp').select2({
-          ajax: {
-            url: 'https://geo.api.gouv.fr/communes',
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-              return {
-                codePostal: (params.term + '00').substring(0, 5)
-              }
-            },
-            processResults: function (data) {
-              return {
-                results: $.map(data, function (item) {
-                  return {
-                    id: item.nom,
-                    text: item.nom
-                  }
-                })
-              }
-            },
-            cache: false
-          },
-          minimumInputLength: 3
-        })
-      })
-    </script>
   </body>
 </html>

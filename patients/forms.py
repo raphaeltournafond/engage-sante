@@ -7,8 +7,8 @@ BASE_FIELDS = ('last_name', 'first_name', 'email', 'rue', 'cp', 'ville')
 
 class UtilisateurUpdateForm(UserChangeForm):
     rue = forms.CharField(required=True)
-    cp = forms.CharField(required=True, widget=Select2Widget(url='https://geo.api.gouv.fr/communes', queryParam='codePostal'))
-    ville = forms.CharField(required=True)
+    cp = forms.CharField(required=True, widget=Select2Widget(url='https://geo.api.gouv.fr/communes', queryParam='codePostal', fillWith='00'))
+    ville = forms.CharField(required=True, widget=Select2Widget(url='https://geo.api.gouv.fr/communes?boost=population&limit=5', queryParam='nom', maxLength=20))
 
     class Meta:
         model = Utilisateur
