@@ -14,25 +14,22 @@
     <a href="{% url 'list_patients' %}">Annuler</a>
     <a href="{% url 'delete_utilisateur' utilisateur.id %}">Supprimer</a>
 
-
-    <label for="codePostal">Enter Postal Code:</label>
-    <input type="text" id="codePostal" name="codePostal">
     <label for="communes">Communes:</label>
     <select id="communes" name="communes"></select>
 
     <!-- Script pour mettre à jour les champs avec geo api -->
     <script>
       $(document).ready(function () {
-        $('#codePostal').on('input', function () {
+        $('#id_cp').on('input', function () {
           var codePostal = $(this).val()
-          if (codePostal.length >= 5) {
+          if (codePostal.length >= 3) {
             $.ajax({
               url: `https://geo.api.gouv.fr/communes?codePostal=${codePostal}&limit=5`,
               method: 'GET',
               success: function (data) {
                 $('#communes').empty() // Clear the previous options
                 data.forEach(function (commune) {
-                  $('#communes').append(new Option(commune.nom, commune.codesPostaux[0]))
+                  $('#communes').append(new Option(commune.nom, commune.nom))
                 })
               },
               error: function (error) {
