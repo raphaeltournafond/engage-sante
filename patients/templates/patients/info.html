@@ -6,6 +6,7 @@
 
 {% block content %}
   <h1>Informations de l'utilisateur</h1>
-  <p>{{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.rue }}, {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
-  <p>Identifiant unique : {{ utilisateur.username }}</p>
+  <p>{{ utilisateur.last_name }} {{ utilisateur.first_name }}</p>
+  <p>Identifiant : {{ utilisateur.username }}</p>
+  <p>Adresse : {{ utilisateur.rue }}, {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
 {% endblock %}
