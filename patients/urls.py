@@ -15,6 +15,6 @@ urlpatterns = [
     path('reset-done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('not_authorized/', views.not_authorized, name='not_authorized'),
     # Consultations
-    path('patients/<int:user_id>/consultations/', cons_views.list_consultation, name='list_consultation'),
-    path('patients/<int:user_id>/consultations/creer/', cons_views.create_consultation, name='create_consultation'),
+    path('patients/<int:patient_id>/consultations/', cons_views.list_consultation, name='list_consultation'),
+    path('patients/<int:patient_id>/consultations/creer/', cons_views.create_consultation, name='create_consultation'),
 ]

@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Consultations de {{ utilisateur.last_name }} {{ utilisateur.first_name }}</h2>
+  <h2>Consultations de {{ patient.last_name }} {{ patient.first_name }}</h2>
   <ul>
     {% for consultation in consultations %}
       <li>
         {{ consultation.nom }} - {{ consultation.date }} - {{ consultation.type }}
         <a href="{% url 'update_consultation' consultation.id %}">Modifier</a>
+        <a href="{% url 'delete_consultation' consultation.id %}">Supprimer</a>
       </li>
     {% endfor %}
   </ul>
-  <a href="{% url 'create_consultation' utilisateur.id %}">Nouvelle consultation</a>
+  <a href="{% url 'create_consultation' patient.id %}">Nouvelle consultation</a>
 {% endblock %}

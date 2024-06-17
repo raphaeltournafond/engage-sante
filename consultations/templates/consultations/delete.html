@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}
+Supprimer Consultation
+{% endblock %}
+
+{% block content %}
+  <h1>Supprimer une Consultation</h1>
+  <p>Êtes-vous sûr de vouloir supprimer {{ consultation.nom }} de {{ consultation.patient.last_name }} {{ consultation.patient.first_name }} ?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Supprimer</button>
+  </form>
+  <a href="{% url 'list_consultation' consultation.patient.id %}">Annuler</a>
+{% endblock %}
