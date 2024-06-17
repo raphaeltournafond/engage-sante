@@ -23,8 +23,9 @@
         $('#id_cp').on('input', function () {
           var codePostal = $(this).val()
           if (codePostal.length >= 3) {
+            var queryCodePostal = (codePostal + '00').substring(0, 5);
             $.ajax({
-              url: `https://geo.api.gouv.fr/communes?codePostal=${codePostal}&limit=5`,
+              url: `https://geo.api.gouv.fr/communes?codePostal=${queryCodePostal}`,
               method: 'GET',
               success: function (data) {
                 $('#communes').empty() // Clear the previous options
@@ -36,6 +37,8 @@
                 console.error('Error fetching data', error)
               }
             })
+          } else {
+            $('#communes').empty()
           }
         })
       })
