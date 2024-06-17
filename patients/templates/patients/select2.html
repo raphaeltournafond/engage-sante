@@ -1,0 +1,3 @@
+{% load static %}
+
+<input type="text" name="{{ widget.name }}" value="{{ widget.value }}" id="{{ widget.attrs.id }}" {{ widget.attrs|default_if_none:""|join:" " }}>

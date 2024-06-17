@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from patients.widgets import Select2Widget
 from .models import Utilisateur
 
 BASE_FIELDS = ('last_name', 'first_name', 'email', 'rue', 'cp', 'ville')
 
 class UtilisateurUpdateForm(UserChangeForm):
     rue = forms.CharField(required=True)
-    cp = forms.CharField(required=True)
+    cp = forms.CharField(required=True, widget=Select2Widget(url='https://geo.api.gouv.fr/communes', queryParam='codePostal'))
     ville = forms.CharField(required=True)
 
     class Meta:
