@@ -48,7 +48,9 @@ class Select2Widget(forms.TextInput):
                                 results: $.map(data, function(item) {{
                                     return {{
                                         id: item.nom,
-                                        text: item.nom
+                                        text: item.nom,
+                                        codesPostaux: item.codesPostaux,
+                                        nom: item.nom
                                     }}
                                 }})
                             }};
@@ -57,6 +59,14 @@ class Select2Widget(forms.TextInput):
                     }},
                     minimumInputLength: {self.minLength},
                     placeholder: `{self.placeholder}`,
+                }}).on('select2:select', function (e) {{
+                    var data = e.params.data;
+                    if (data.codesPostaux && data.codesPostaux.length > 0) {{
+                        $('#id_cp').val(data.codesPostaux[0]);
+                        $('#select2-id_cp-container').text(data.codesPostaux[0]);
+                    }}
+                    $('#id_ville').val(data.nom);
+                    $('#select2-id_ville-container').text(data.nom);
                 }});
             }});
         </script>

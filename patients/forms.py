@@ -30,6 +30,11 @@ class CustomUtilisateurCreationForm(UserCreationForm):
     cp = forms.CharField(required=True, widget=Select2Widget(url=CP_BASE_URL, queryParam=CP_SEARCH_PARAM, placeholder=CP_PLACEHOLDER, fillWith='00'))
     ville = forms.CharField(required=True, widget=Select2Widget(url=VILLE_BASE_URL, queryParam=VILLE_SEARCH_PARAM,  placeholder=VILLE_PLACEHOLDER, maxLength=20))
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cp'].initial = self.instance.cp
+        self.fields['ville'].initial = self.instance.ville
+
     class Meta:
         model = Utilisateur
         fields = BASE_FIELDS
