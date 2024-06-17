@@ -4,9 +4,10 @@ from django.utils.safestring import mark_safe
 class Select2Widget(forms.TextInput):
     template_name = 'patients/select2.html'
 
-    def __init__(self, url, queryParam, fillWith = '', minLength = 3, maxLength = 5,  *args, **kwargs):
+    def __init__(self, url, queryParam, placeholder = '', fillWith = '', minLength = 3, maxLength = 5,  *args, **kwargs):
         self.url = url
         self.queryParam = queryParam
+        self.placeholder = placeholder
         self.fillWith = fillWith
         self.minLength = minLength
         self.maxLength = maxLength
@@ -16,6 +17,7 @@ class Select2Widget(forms.TextInput):
         context = super().get_context(name, value, attrs)
         context['url'] = self.url
         context['queryParam'] = self.queryParam
+        context['placeholder'] = self.placeholder
         context['fillWith'] = self.fillWith
         context['minLength'] = self.minLength
         context['maxLength'] = self.maxLength
@@ -50,6 +52,8 @@ class Select2Widget(forms.TextInput):
                         cache: true
                     }},
                     minimumInputLength: {self.minLength},
+                    placeholder: `{self.placeholder}`,
+                    allowClear: true,
                 }});
             }});
         </script>
