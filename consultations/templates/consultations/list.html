@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Consultations de {{ utilisateur.last_name }} {{ utilisateur.first_name }}</h2>
+  <ul>
+    {% for consultation in consultations %}
+      <li>
+        {{ consultation.nom }} - {{ consultation.date }} - {{ consultation.type }}
+        <a href="{% url 'consultation_update' consultation.id %}">Modifier</a>
+        <a href="{% url 'consultation_delete' consultation.id %}">Supprimer</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'consultation_create' patient.id %}">Ajouter une consultation</a>
+{% endblock %}
