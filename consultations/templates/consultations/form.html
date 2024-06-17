@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}
+  Modifier Consultation
+{% endblock %}
+
+{% block content %}
+  <h2>{% if form.instance.id %}Modifier la Consultation{% else %}Nouvelle Consultation{% endif %} pour {{ utilisateur.last_name }} {{ utilisateur.first_name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Valider</button>
+  </form>
+  <a href="{% url 'list_consultation' utilisateur.id %}">Retour aux Consultations</a>
+{% endblock %}
