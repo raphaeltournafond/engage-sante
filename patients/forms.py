@@ -6,13 +6,15 @@ from .models import Utilisateur
 BASE_FIELDS = ('last_name', 'first_name', 'email', 'rue', 'cp', 'ville')
 CP_BASE_URL = 'https://geo.api.gouv.fr/communes'
 CP_SEARCH_PARAM = 'codePostal'
+CP_PLACEHOLDER = 'Entrez un code postal'
 VILLE_BASE_URL = 'https://geo.api.gouv.fr/communes?boost=population&limit=5'
 VILLE_SEARCH_PARAM = 'nom'
+VILLE_PLACEHOLDER = 'Entrez une ville'
 
 class UtilisateurUpdateForm(UserChangeForm):
     rue = forms.CharField(required=True)
-    cp = forms.CharField(required=True, widget=Select2Widget(url=CP_BASE_URL, queryParam=CP_SEARCH_PARAM, placeholder='Entrez un code postal', fillWith='00'))
-    ville = forms.CharField(required=True, widget=Select2Widget(url=VILLE_BASE_URL, queryParam=VILLE_SEARCH_PARAM,  placeholder='Entrez une ville', maxLength=20))
+    cp = forms.CharField(required=True, widget=Select2Widget(url=CP_BASE_URL, queryParam=CP_SEARCH_PARAM, placeholder=CP_PLACEHOLDER, fillWith='00'))
+    ville = forms.CharField(required=True, widget=Select2Widget(url=VILLE_BASE_URL, queryParam=VILLE_SEARCH_PARAM,  placeholder=VILLE_PLACEHOLDER, maxLength=20))
 
     class Meta:
         model = Utilisateur
