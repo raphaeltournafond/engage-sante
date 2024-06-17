@@ -29,6 +29,10 @@ class Select2Widget(forms.TextInput):
         js = f"""
         <script type="text/javascript">
             $(document).ready(function() {{
+                if ('{value}') {{
+                    var option = new Option('{value}', '{value}', true, true);
+                    $('#id_{name}').append(option).trigger('change');
+                }}
                 $('#id_{name}').select2({{
                     ajax: {{
                         url: '{self.url}',
@@ -53,7 +57,6 @@ class Select2Widget(forms.TextInput):
                     }},
                     minimumInputLength: {self.minLength},
                     placeholder: `{self.placeholder}`,
-                    allowClear: true,
                 }});
             }});
         </script>
