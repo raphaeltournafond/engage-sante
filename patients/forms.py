@@ -22,8 +22,8 @@ class UtilisateurUpdateForm(UserChangeForm):
 
 class CustomUtilisateurCreationForm(UserCreationForm):
     rue = forms.CharField(required=True)
-    cp = forms.CharField(required=True)
-    ville = forms.CharField(required=True)
+    cp = forms.CharField(required=True, widget=Select2Widget(url=CP_BASE_URL, queryParam=CP_SEARCH_PARAM, placeholder=CP_PLACEHOLDER, fillWith='00'))
+    ville = forms.CharField(required=True, widget=Select2Widget(url=VILLE_BASE_URL, queryParam=VILLE_SEARCH_PARAM,  placeholder=VILLE_PLACEHOLDER, maxLength=20))
 
     class Meta:
         model = Utilisateur
