@@ -9,6 +9,7 @@ urlpatterns = [
     path('modifier/<int:user_id>/', views.update_utilisateur, name='update_utilisateur'),
     path('supprimer/<int:user_id>/', views.delete_utilisateur, name='delete_utilisateur'),
     path('connexion/', views.CustomLoginView.as_view(), name='login'),
+    path('deconnexion/', auth_views.LogoutView.as_view(), name='logout'),
     path('enregistrer/patient/', views.register_patient, name='register_patient'),
     path('enregistrer/medecin/', views.register_medecin, name='register_medecin'),
     path('reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

@@ -77,6 +77,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'engage_sante.wsgi.application'
 
+# Redirige vers la page daccueil après la connexion ou deconnexion
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# URL du login
+LOGIN_URL = 'login'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
