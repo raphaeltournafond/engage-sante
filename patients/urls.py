@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from consultations import views as cons_views
 
 urlpatterns = [
     path('patients/', views.list_patients, name='list_patients'),
@@ -13,4 +14,6 @@ urlpatterns = [
     path('reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('reset-done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('not_authorized/', views.not_authorized, name='not_authorized'),
+    # Consultations
+    path('patients/<int:user_id>/consultations/', cons_views.list_consultation, name='list_consultation'),
 ]
