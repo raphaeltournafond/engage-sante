@@ -10,6 +10,7 @@
     {% for consultation in consultations %}
       <li>
         {{ consultation.nom }} - {{ consultation.date }} - {{ consultation.type }}
+        <a href="{% url 'update_consultation' consultation.id %}">Modifier</a>
       </li>
     {% endfor %}
   </ul>
