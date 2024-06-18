@@ -1,2 +1,5 @@
-sh reset.sh
-docker-compose exec web python manage.py populate 100
+sh stop.sh
+docker volume rm engage_sante_postgres_data
+sh build.sh
+sh run.sh
+sh migrate.sh
