@@ -6,3 +6,9 @@ python-dotenv==1.0.1
 
 # Postgres
 psycopg2-binary==2.9.9
+
+# Faker to generate random addresses and users
+Faker==25.8.0
+
+# To add progress bar
+tqdm==4.66.4
