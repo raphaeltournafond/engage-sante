@@ -6,6 +6,20 @@ Engage-Santé est une application web destinée à la gestion de patientèle et 
 
 > Nécessite Docker et Docker Compose
 
+Créer un fichier `.env` dont voici un exemple pour usage local :
+
+```env
+# WEB CONTAINER
+PORT=8000
+
+# POSTGRES DATABASE CONTAINER
+POSTGRES_VERSION=latest
+POSTGRES_DB=engage_sante_db
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=password
+POSTGRES_PORT=5432
+```
+
 ```bash
 cd scripts
 sh init.sh
