@@ -2,11 +2,11 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.text import slugify
 
-def generate_unique_username(last_name, first_name):
+def generate_unique_username(last_name, first_name, cache=[]):
     base_username = slugify(f"{last_name[:5]}{first_name[:2]}")
     unique_username = base_username
     num = 1
-    while Utilisateur.objects.filter(username=unique_username).exists():
+    while Utilisateur.objects.filter(username=unique_username).exists() or unique_username in cache:
         unique_username = f"{base_username}{num}"
         num += 1
     return unique_username
