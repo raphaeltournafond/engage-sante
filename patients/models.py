@@ -20,7 +20,7 @@ class Utilisateur(AbstractUser):
     is_medecin = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if not self.pk and not self.username:
             self.username = generate_unique_username(self.last_name, self.first_name)
             if self.is_medecin:
                 self.is_staff = True
