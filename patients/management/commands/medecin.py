@@ -22,7 +22,7 @@ class Command(BaseCommand):
             password = getpass.getpass(prompt="Mot de passe : ")
             password_confirm = getpass.getpass(prompt="Confirmer le mot de passe : ")
         username = generate_unique_username(last_name, first_name)
-        medecin = Medecin.objects.create_user(
+        Medecin.objects.create_user(
             username=username,
             first_name=first_name,
             last_name=last_name,
@@ -32,8 +32,6 @@ class Command(BaseCommand):
             cp=fake.postcode(),
             ville=fake.city(),
             is_medecin=True,
-            is_superuser=True,
-            is_active=True,
             is_staff=True,
         )
 
