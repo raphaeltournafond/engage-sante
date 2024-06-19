@@ -1,5 +1,6 @@
 # Django
 Django==5.0.6
+django-tailwind==3.8.0
 
 # To read dotenv files
 python-dotenv==1.0.1
