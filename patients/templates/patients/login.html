@@ -12,7 +12,7 @@
         <p class="py-6 text-center">Pour accéder à vos données veuillez vous connecter.</p>
       </div>
       <div class="card shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-200">
-        <form class="card-body" method="post" action="{% url 'login' %}">
+        <form class="card-body" method="post">
           {% csrf_token %}
           <div class="form-control">
             <label class="label"><span class="label-text">Identifiant</span></label>

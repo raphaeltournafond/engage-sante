@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import PatientCreationForm, MedecinCreationForm, UtilisateurUpdateForm
+from .forms import CustomUtilisateurCreationForm, MedecinCreationForm, UtilisateurUpdateForm
 from .models import Utilisateur
 
 @login_required
@@ -56,19 +56,23 @@ class CustomLoginView(LoginView):
     def get_success_url(self, user):
         return reverse('info_utilisateur', kwargs={'user_id': user.id})
 
-@login_required 
 def register_patient(request):
-    if request.user.is_staff:
         if request.method == 'POST':
-            form = PatientCreationForm(request.POST)
+            form = CustomUtilisateurCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
                 login(request, user)
-                return redirect('list_patients')
+                return render(request, 'patients/info.html', {'utilisateur': user})
+            else:
+                error_message = None
+                if 'password2' in form.errors.as_data():
+                    error_message = form.errors.as_data()['password2'][0].message
+                    print(error_message)
+
+                return render(request, 'patients/register.html', {'form': form, 'error_message': error_message})
         else:
-            form = PatientCreationForm()
-        return render(request, 'patients/register.html', {'form': form})
-    return redirect('not_authorized')
+            form = CustomUtilisateurCreationForm()
+        return render(request, 'patients/register.html', {'form': form, 'error_message': None})
 
 @login_required
 def register_medecin(request):
