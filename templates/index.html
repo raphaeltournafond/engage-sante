@@ -1,0 +1,71 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}
+  Accueil | Engage Santé
+{% endblock %}
+
+{% block content %}
+  <header class="hero p-10">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">Gestion de Patientèle Médicale</h1>
+        <p class="py-6">Une solution complète pour la gestion des consultations et des dossiers patients</p>
+        <a href="#home" class="btn btn-accent">Découvrir</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="home" class="hero p-10">
+    <div class="hero-content flex-col lg:flex-row">
+      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Bienvenue sur notre plateforme</h2>
+        <p>Notre application de gestion de patientèle est conçue pour faciliter le quotidien des médecins et des cabinets médicaux en leur offrant un outil performant et intuitif pour gérer les consultations et les dossiers patients.</p>
+        <p class="mt-4">Avec notre solution, vous pouvez améliorer l'efficacité de votre pratique médicale, assurer un suivi rigoureux des patients et offrir un meilleur service à vos patients.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="hero p-10">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">À propos de notre solution</h2>
+        <p>Notre mission est de fournir aux professionnels de santé une application fiable et facile à utiliser pour la gestion des patients et des consultations. Nous comprenons les défis que vous rencontrez et avons développé une plateforme qui répond à vos besoins spécifiques.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="hero p-10">
+    <div class="hero-content flex-col lg:flex-row">
+      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Fonctionnalités clés</h2>
+        <h3 class="text-xl font-semibold mt-6">Pour les médecins</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Accès direct et sécurisé aux dossiers patients</li>
+          <li>Ajout, modification et suppression de patients</li>
+          <li>Gestion des consultations avec historique complet</li>
+          <li>Notifications et rappels pour les suivis de consultations</li>
+        </ul>
+        <h3 class="text-xl font-semibold mt-6">Pour les patients</h3>
+        <ul class="list-disc list-inside mt-2">
+          <li>Accès à leurs propres informations de manière sécurisée</li>
+          <li>Visualisation de l'historique des consultations</li>
+          <li>Interaction directe avec le médecin via la plateforme</li>
+        </ul>
+        <p class="mt-4">Notre application utilise les dernières technologies pour assurer la sécurité et la confidentialité des données médicales. Elle est facile à déployer et à utiliser, ce qui vous permet de vous concentrer sur l'essentiel : vos patients.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Contactez-nous</h2>
+    <p>Pour plus d'informations ou pour demander une démonstration, veuillez nous contacter à l'adresse suivante :</p>
+    <p class="mt-2">
+      Email : <a href="mailto:support@gestionpatientele.com" class="text-green-600 hover:text-green-800">support@gestionpatientele.com</a>
+    </p>
+    <p class="mt-2">Téléphone : +33 1 23 45 67 89</p>
+    <p class="mt-2">Adresse : 123 Rue de la Santé, 75000 Paris, France</p>
+  </section>
+{% endblock %}
