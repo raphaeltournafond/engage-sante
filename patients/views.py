@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import CustomUtilisateurCreationForm, MedecinCreationForm, UtilisateurUpdateForm
+from .forms import CustomUtilisateurCreationForm, UtilisateurUpdateForm
 from .models import Utilisateur
 
 @login_required
@@ -29,7 +29,7 @@ def update_utilisateur(request, user_id):
             form = UtilisateurUpdateForm(request.POST, instance=utilisateur)
             if form.is_valid():
                 form.save()
-                return redirect('list_patients')
+                return render(request, 'patients/info.html', {'utilisateur': utilisateur})
         else:
             form = UtilisateurUpdateForm(instance=utilisateur)
         return render(request, 'patients/update.html', {'form': form, 'utilisateur': utilisateur})
@@ -61,6 +61,7 @@ def register_patient(request):
             form = CustomUtilisateurCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
+                user.id_medecin = False
                 login(request, user)
                 return render(request, 'patients/info.html', {'utilisateur': user})
             else:
@@ -78,13 +79,13 @@ def register_patient(request):
 def register_medecin(request):
     if request.user.is_staff:
         if request.method == 'POST':
-            form = MedecinCreationForm(request.POST)
+            form = CustomUtilisateurCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
                 login(request, user)
                 return redirect('list_patients')
         else:
-            form = MedecinCreationForm()
+            form = CustomUtilisateurCreationForm()
         return render(request, 'patients/register.html', {'form': form})
     return redirect('not_authorized')
 

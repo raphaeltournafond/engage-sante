@@ -2455,6 +2455,11 @@ html {
   margin-bottom: 3rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -2628,6 +2633,10 @@ html {
   align-items: baseline;
 }
 
+.justify-normal {
+  justify-content: normal;
+}
+
 .justify-start {
   justify-content: flex-start;
 }
@@ -2763,6 +2772,22 @@ html {
 .bg-indigo-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-90 {
+  --tw-bg-opacity: 0.9;
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}
+
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
 }
 
 .fill-current {
@@ -2960,6 +2985,10 @@ html {
 
 .opacity-90 {
   opacity: 0.9;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .shadow-md {

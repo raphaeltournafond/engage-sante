@@ -31,7 +31,8 @@
                 <button type="submit">Déconnexion</button>
               </form>
             {% else %}
-              <span class="btn btn-accent drop-shadow-md"><a href="{% url 'login' %}">Connexion</a></span>
+              <span class="btn btn-accent drop-shadow-md mx-5"><a href="{% url 'login' %}">Connexion</a></span>
+              <span class="btn btn-accent border-black bg-opacity-20 drop-shadow-md"><a href="{% url 'register_patient' %}">Créer un compte</a></span>
             {% endif %}
           </li>
         </ul>
