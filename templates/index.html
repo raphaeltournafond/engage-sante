@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <header class="hero p-10">
+  <header class="hero pt-10">
     <div class="hero-content text-center">
       <div class="max-w-md">
         <h1 class="text-5xl font-bold">Gestion de Patientèle Médicale</h1>
@@ -66,13 +66,13 @@
         <div class="w-1/2">
           <p>Pour plus d'informations ou pour demander une démonstration, veuillez nous contacter à l'adresse suivante :</p>
           <p class="mt-2">
-            <a href="mailto:support@gestionpatientele.com" class="text-accent opacity-80 hover:opacity-100">support@gestionpatientele.com</a>
+            <a href="mailto:support@gestionpatientele.com" class="text-success">support@gestionpatientele.com</a>
           </p>
           <p class="mt-2">Téléphone : +33 1 23 45 67 89</p>
           <p class="mt-2">Adresse : 123 Rue de la Santé, 75000 Paris, France</p>
         </div>
       </div>
-      <form class="mt-10 bg-base-300 p-6 rounded-lg shadow-md space-y-4 w-full">
+      <form class="mt-10 bg-base-200 p-6 rounded-lg shadow-md space-y-4 w-full">
         <div class="form-control">
           <label class="label" for="name"><span class="label-text">Nom</span></label>
           <input type="text" id="name" class="input input-bordered w-full" placeholder="Votre nom" />
@@ -85,7 +85,9 @@
           <label class="label" for="message"><span class="label-text">Message</span></label>
           <textarea id="message" class="textarea textarea-bordered w-full" placeholder="Votre message"></textarea>
         </div>
-        <button type="submit" class="btn btn-accent">Envoyer</button>
+        <div class="flex justify-end">
+          <button type="submit" class="btn btn-accent">Envoyer</button>
+        </div>
       </form>
     </div>
   </section>
