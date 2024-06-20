@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "tailwindcss -i input.css -o output.css --watch"
+    "dev": "tailwindcss -i static/tailwind/tailwind-input.css -o static/css/engage-ui.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.4"
