@@ -5,14 +5,38 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Liste des Patients</h1>
-  <a href="{% url 'register_patient' %}">Ajouter</a>
-  <ul>
-    {% for patient in patients %}
-      <li>
-        {{ patient.username }} - {{ patient.last_name }} {{ patient.first_name }} - {{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}
-        <a href="{% url 'update_utilisateur' patient.id %}">Modifier</a>
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="flex flex-col min-h-screen m-20">
+
+    <div class="flex flex-col items-center mb-10">
+      <h1 class="text-3xl font-bold m-10">Liste des Patients</h1>
+      <a href="{% url 'register_patient' %}" class="btn btn-info">Créer un nouveau patient</a>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-lg">NOM Prénom</th>
+            <th class="text-lg">Prochaine consultation</th>
+            <th class="text-lg">Email</th>
+            <th class="text-lg">Adresse</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for patient in patients %}
+            <tr class="hover:bg-base-200">
+              <th>{{ patient.last_name|upper }} {{ patient.first_name }}</th>
+              <th>Prochaine consultation</th>
+              <th>{{ patient.email }}</th>
+              <th>{{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}</th>
+              <th>
+                <a class="btn btn-outline" href="{% url 'update_utilisateur' patient.id %}">Modifier</a>
+              </th>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {% endblock %}
