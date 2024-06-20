@@ -15,7 +15,9 @@
       <h1 class="text-3xl font-bold mb-2">Informations de l'utilisateur</h1>
       <p class="text-xl">{{ utilisateur.last_name }} {{ utilisateur.first_name }}</p>
       <br />
-      <p class="text-lg">Identifiant unique : {{ utilisateur.username }}</p>
+      <p class="text-lg">Identifiant unique à conserver : <span class="font-bold">{{ utilisateur.username }}</span></p>
+      <br />
+      <p class="text-lg">Email : {{ utilisateur.email }}</p>
       <br />
       <p class="text-lg">{{ utilisateur.rue }},<br /> {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
     </div>
