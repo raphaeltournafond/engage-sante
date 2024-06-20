@@ -61,7 +61,9 @@ def register_patient(request):
             form = CustomUtilisateurCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
-                user.id_medecin = False
+                user.is_medecin = False
+                user.is_staff = False
+                user.save()
                 login(request, user)
                 return render(request, 'patients/info.html', {'utilisateur': user})
             else:
@@ -82,11 +84,21 @@ def register_medecin(request):
             form = CustomUtilisateurCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
+                user.is_medecin = True
+                user.is_staff = True
+                user.save()
                 login(request, user)
                 return redirect('list_patients')
+            else:
+                error_message = None
+                if 'password2' in form.errors.as_data():
+                    error_message = form.errors.as_data()['password2'][0].message
+                    print(error_message)
+
+                return render(request, 'patients/register.html', {'form': form, 'error_message': error_message})
         else:
             form = CustomUtilisateurCreationForm()
-        return render(request, 'patients/register.html', {'form': form})
+        return render(request, 'patients/register.html', {'form': form, 'error_message': None})
     return redirect('not_authorized')
 
 def not_authorized(request):
