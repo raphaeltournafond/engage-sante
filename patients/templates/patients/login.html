@@ -5,37 +5,56 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-2xl">Connexion</h1>
-  {% if form.errors %}
-    <p>Votre nom d'utilisateur et mot de passe sont incorrects. Veuillez réessayer.</p>
-  {% endif %}
+  <div class="min-h-screen pt-20">
+    <div class="flex flex-col justify-center items-center">
+      <div class="lg:text-left w-1/2 max-w-sm">
+        <h1 class="text-5xl font-bold text-center">Connectez-vous</h1>
+        <p class="py-6 text-center">Pour accéder à vos données veuillez vous connecter.</p>
+      </div>
+      <div class="card shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-200">
+        <form class="card-body" method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="form-control">
+            <label class="label"><span class="label-text">Identifiant</span></label>
+            <input class="input input-bordered" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required />
+          </div>
+          <div class="form-control">
+            <label class="label"><span class="label-text">Mot de passe</span></label>
+            <input type="password" class="input input-bordered" name="password" autocomplete="current-password" required="" id="id_password" />
+            <label class="label"><a href="{% url 'password_reset' %}" class="label-text-alt link link-hover">Mot de passe oublié ?</a></label>
+          </div>
+          <div class="form-control mt-6">
+            <button class="btn btn-accent">Connexion</button>
+          </div>
+          {% if form.errors %}
+            <div role="alert" class="alert alert-error">
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Votre nom d'utilisateur et mot de passe sont incorrects. Veuillez réessayer.</span>
+            </div>
+          {% endif %}
 
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Votre compte n'a pas accès à cette page. Pour la visualiser connectez vous avec un compte ayant les permissions nécessaires.</p>
-    {% else %}
-      <p>Merci de vous connecter pour accéder à cette page.</p>
-    {% endif %}
-  {% endif %}
-
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-
-    <input type="submit" value="login" class="btn" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-
-  <p>
-    <a href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
-  </p>
+          {% if next %}
+            {% if user.is_authenticated %}
+              <div role="alert" class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Votre compte n'a pas accès à cette page. Pour la visualiser connectez vous avec un compte ayant les permissions nécessaires.</span>
+              </div>
+              <p class="alert-error">Votre compte n'a pas accès à cette page. Pour la visualiser connectez vous avec un compte ayant les permissions nécessaires.</p>
+            {% else %}
+              <div role="alert" class="alert alert-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Merci de vous connecter pour accéder à cette page.</span>
+              </div>
+            {% endif %}
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}

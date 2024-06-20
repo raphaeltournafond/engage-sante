@@ -21,11 +21,11 @@
         <ul class="menu-horizontal px-1">
           <li class="flex flex-row items-center">
             {% if user.is_authenticated %}
-              <p class="px-5">
+              <div class="px-5">
                 Bienvenue, {{ user.first_name }} {{ user.last_name }} {% if user.is_staff %}
-                  <span class="text-warning">(Staff)</span>
+                <div class="badge badge-warning">Staff</div>
                 {% endif %}
-              </p>
+              </div>
               <form class="btn btn-accent drop-shadow-md" action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Déconnexion</button>
