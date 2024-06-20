@@ -17,7 +17,7 @@
 
   <section id="home" class="hero p-10">
     <div class="hero-content flex-col lg:flex-row">
-      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <img src="./static/images/home.png" class="max-w-sm pr-10" />
       <div>
         <h2 class="text-2xl font-bold mb-4">Bienvenue sur notre plateforme</h2>
         <p>Notre application de gestion de patientèle est conçue pour faciliter le quotidien des médecins et des cabinets médicaux en leur offrant un outil performant et intuitif pour gérer les consultations et les dossiers patients.</p>
@@ -28,7 +28,7 @@
 
   <section id="about" class="hero p-10">
     <div class="hero-content flex-col lg:flex-row-reverse">
-      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <img src="./static/images/about.png" class="max-w-sm pl-10" />
       <div>
         <h2 class="text-2xl font-bold mb-4">À propos de notre solution</h2>
         <p>Notre mission est de fournir aux professionnels de santé une application fiable et facile à utiliser pour la gestion des patients et des consultations. Nous comprenons les défis que vous rencontrez et avons développé une plateforme qui répond à vos besoins spécifiques.</p>
@@ -36,9 +36,9 @@
     </div>
   </section>
 
-  <section id="about" class="hero p-10">
+  <section id="info" class="hero p-10">
     <div class="hero-content flex-col lg:flex-row">
-      <!-- <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" /> TODO add img -->
+      <img src="./static/images/info.png" class="max-w-sm pr-10" />
       <div>
         <h2 class="text-2xl font-bold mb-4">Fonctionnalités clés</h2>
         <h3 class="text-xl font-semibold mt-6">Pour les médecins</h3>
@@ -59,13 +59,34 @@
     </div>
   </section>
 
-  <section id="contact" class="container mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-4">Contactez-nous</h2>
-    <p>Pour plus d'informations ou pour demander une démonstration, veuillez nous contacter à l'adresse suivante :</p>
-    <p class="mt-2">
-      Email : <a href="mailto:support@gestionpatientele.com" class="text-green-600 hover:text-green-800">support@gestionpatientele.com</a>
-    </p>
-    <p class="mt-2">Téléphone : +33 1 23 45 67 89</p>
-    <p class="mt-2">Adresse : 123 Rue de la Santé, 75000 Paris, France</p>
+  <section id="contact" class="hero p-10">
+    <div class="hero-content flex-col lg:flex-row">
+      <div class="w-full">
+        <h2 class="text-2xl font-bold mb-4">Contactez-nous</h2>
+        <div class="w-1/2">
+          <p>Pour plus d'informations ou pour demander une démonstration, veuillez nous contacter à l'adresse suivante :</p>
+          <p class="mt-2">
+            <a href="mailto:support@gestionpatientele.com" class="text-green-600 hover:text-green-800">support@gestionpatientele.com</a>
+          </p>
+          <p class="mt-2">Téléphone : +33 1 23 45 67 89</p>
+          <p class="mt-2">Adresse : 123 Rue de la Santé, 75000 Paris, France</p>
+        </div>
+      </div>
+      <form class="mt-10 bg-gray-100 p-6 rounded-lg shadow-md space-y-4 w-full">
+        <div class="form-control">
+          <label class="label" for="name"><span class="label-text">Nom</span></label>
+          <input type="text" id="name" class="input input-bordered w-full" placeholder="Votre nom" />
+        </div>
+        <div class="form-control">
+          <label class="label" for="email"><span class="label-text">Email</span></label>
+          <input type="email" id="email" class="input input-bordered w-full" placeholder="Votre email" />
+        </div>
+        <div class="form-control">
+          <label class="label" for="message"><span class="label-text">Message</span></label>
+          <textarea id="message" class="textarea textarea-bordered w-full" placeholder="Votre message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </div>
   </section>
 {% endblock %}
