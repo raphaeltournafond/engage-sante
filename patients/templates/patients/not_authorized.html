@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Non Autorisé</h1>
-  <p>Vous n'avez pas l'autorisation d'accéder à cette page.</p>
+  <div class="hero min-h-screen">
+    <div class="hero-content flex-col lg:flex-row">
+      <img src="../static/images/secured.png" class="pr-5" />
+      <div>
+        <h1 class="text-5xl font-bold">Non Autorisé</h1>
+        <p class="py-6">Vous n'avez pas l'autorisation d'accéder à cette page.</p>
+        <a href="/" class="btn btn-accent">Revenir à l'accueil</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
