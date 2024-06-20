@@ -22,7 +22,7 @@
           <li class="flex flex-row items-center">
             {% if user.is_authenticated %}
               <div class="px-5">
-                Bienvenue, {{ user.first_name }} {{ user.last_name }} {% if user.is_staff %}
+                Bienvenue, {{ user.last_name }} {{ user.first_name }} {% if user.is_staff %}
                 <div class="badge badge-warning">Staff</div>
                 {% endif %}
               </div>

@@ -5,8 +5,19 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Informations de l'utilisateur</h1>
-  <p>{{ utilisateur.last_name }} {{ utilisateur.first_name }}</p>
-  <p>Identifiant : {{ utilisateur.username }}</p>
-  <p>Adresse : {{ utilisateur.rue }}, {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
+  <div class="flex items-start justify-center space-x-4 min-h-screen pt-20">
+    <div class="avatar placeholder">
+      <div class="bg-neutral text-neutral-content rounded-full w-24">
+        <span class="text-3xl">{{ utilisateur.last_name|slice:':1'|upper }}{{ utilisateur.first_name|slice:':1'|upper }}</span>
+      </div>
+    </div>
+    <div>
+      <h1 class="text-3xl font-bold mb-2">Informations de l'utilisateur</h1>
+      <p class="text-xl">{{ utilisateur.last_name }} {{ utilisateur.first_name }}</p>
+      <br />
+      <p class="text-lg">Identifiant unique : {{ utilisateur.username }}</p>
+      <br />
+      <p class="text-lg">{{ utilisateur.rue }},<br /> {{ utilisateur.cp }} {{ utilisateur.ville }}</p>
+    </div>
+  </div>
 {% endblock %}
