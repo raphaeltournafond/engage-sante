@@ -9,10 +9,11 @@
     </title>
     <link rel="stylesheet" href="{% static 'css/engage-ui.css' %}" type="text/css" />
     {% block extra_head %}
-
+      <!-- HTMX -->
+      <script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
     {% endblock %}
   </head>
-  <body class="text-base-content">
+  <body class="text-base-content" hx-headers="{"X-CSRFToken": "{{ csrf_token }}"}">
     <nav class="navbar bg-base-200 p-2">
       <div class="flex-1">
         <a href="/" class="btn btn-ghost text-xl drop-shadow-sm">Engage <span class="bg-accent rounded-md p-1 text-black">Santé</span></a>

@@ -10,6 +10,8 @@
   <!-- Select2 -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <!-- HTMX -->
+  <script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block content %}
@@ -70,8 +72,8 @@
         </div>
         <div class="mt-10 w-1/2 justify-center items-center flex flex-row space-x-4">
           <a class="btn btn-outline" href="{% url 'list_patients' %}">Retour</a>
-          <button class="btn btn-error" onclick="my_modal_1.showModal()">Supprimer</button>
-          <dialog id="my_modal_1" class="modal modal-bottom sm:modal-middle">
+          <button class="btn btn-error" onclick="user_delete_modal.showModal()">Supprimer</button>
+          <dialog id="user_delete_modal" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
               <h3 class="font-bold text-lg">Supprimer un utilisateur</h3>
               <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
@@ -91,7 +93,7 @@
       </div>
 
       <!-- Espace consultations -->
-       
+
       {% if not utilisateur.is_staff %}
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-3xl my-10">Prochaines consultations</h2>
@@ -105,6 +107,7 @@
                   <th class="text-lg">Type</th>
                   {% if user.is_staff %}
                     <th></th>
+                    <th></th>
                   {% endif %}
                 </tr>
               </thead>
@@ -117,6 +120,24 @@
                     {% if user.is_staff %}
                       <th>
                         <a class="btn btn-outline" href="{% url 'update_consultation' consultation.id %}">Modifier</a>
+                      </th>
+                      <th>
+                        <button class="btn btn-error" onclick="my_modal_{{ forloop.counter }}.showModal()">Supprimer</button>
+
+                        <dialog id="my_modal_{{ forloop.counter }}" class="modal modal-bottom sm:modal-middle">
+                          <div class="modal-box">
+                            <h3 class="font-bold text-lg">Supprimer une consultation</h3>
+                            <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ consultation.nom }} du {{ consultation.date }} ?</p>
+                            <div class="modal-action">
+                              <form method="dialog">
+                                <button class="btn btn-outline">Annuler</button>
+                              </form>
+                              <form>
+                                <button class="btn btn-error" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'  hx-delete="{% url 'delete_consultation' consultation.id %}" hx-on:delete-consultation="this.closest('tr').remove()">Supprimer</button>
+                              </form>
+                            </div>
+                          </div>
+                        </dialog>
                       </th>
                     {% endif %}
                   </tr>
