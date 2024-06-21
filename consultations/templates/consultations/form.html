@@ -41,23 +41,25 @@
         </div>
       </form>
     </div>
-    <div class="mt-10">
-      <button class="btn btn-error" onclick="my_modal_1.showModal()">Supprimer</button>
-      <dialog id="my_modal_1" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Supprimer une consultation</h3>
-          <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ form.instance.nom }} du {{ form.instance.date }} ?</p>
-          <div class="modal-action">
-            <form method="dialog">
-              <button class="btn btn-outline">Annuler</button>
-            </form>
-            <form method="post" action="{% url 'delete_consultation' form.instance.id %}">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-error">Supprimer</button>
-            </form>
+    {% if form.instance.id %}
+      <div class="mt-10">
+        <button class="btn btn-error" onclick="my_modal_1.showModal()">Supprimer</button>
+        <dialog id="my_modal_1" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <h3 class="font-bold text-lg">Supprimer une consultation</h3>
+            <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ form.instance.nom }} du {{ form.instance.date }} ?</p>
+            <div class="modal-action">
+              <form method="dialog">
+                <button class="btn btn-outline">Annuler</button>
+              </form>
+              <form method="post" action="{% url 'delete_consultation' form.instance.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-error">Supprimer</button>
+              </form>
+            </div>
           </div>
-        </div>
-      </dialog>
-    </div>
+        </dialog>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}
