@@ -41,8 +41,8 @@ def update_utilisateur(request, user_id):
 
 @login_required
 def delete_utilisateur(request, user_id):
-    utilisateur = get_object_or_404(Utilisateur, id=user_id)
-    if request.user.is_staff or request.user.id == utilisateur.id:
+    if request.user.is_staff:
+        utilisateur = get_object_or_404(Utilisateur, id=user_id)
         if request.method == 'POST':
             utilisateur.delete()
             return redirect('list_patients')
