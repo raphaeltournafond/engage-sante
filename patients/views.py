@@ -18,7 +18,8 @@ def list_patients(request):
 def info_utilisateur(request, user_id):
     utilisateur = get_object_or_404(Utilisateur, id=user_id)
     if request.user.is_staff or request.user.id == utilisateur.id:
-        return render(request, 'patients/info.html', {'utilisateur': utilisateur})
+        consultations = utilisateur.consultations.all()
+        return render(request, 'patients/info.html', {'utilisateur': utilisateur, 'consultations': consultations})
     return redirect('not_authorized')
 
 @login_required
