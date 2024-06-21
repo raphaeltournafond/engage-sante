@@ -22,7 +22,7 @@ def create_consultation(request, patient_id):
                 consultation = form.save(commit=False)
                 consultation.patient = patient
                 consultation.save()
-                return redirect('list_consultation', patient_id=patient.id)
+                return redirect('patients/update_utilisateur', user_id=consultation.patient.id)
         else:
             form = ConsultationForm()
         return render(request, 'consultations/form.html', {'form': form, 'patient': patient})
@@ -36,7 +36,7 @@ def update_consultation(request, id):
             form = ConsultationForm(request.POST, instance=consultation)
             if form.is_valid():
                 form.save()
-                return redirect('list_consultation', patient_id=consultation.patient.id)
+                return redirect('patients/update_utilisateur', user_id=consultation.patient.id)
         else:
             form = ConsultationForm(instance=consultation)
         return render(request, 'consultations/form.html', {'form': form, 'patient': consultation.patient})
@@ -48,5 +48,5 @@ def delete_consultation(request, id):
         consultation = get_object_or_404(Consultation, id=id)
         if request.method == 'POST':
             consultation.delete()
-            return redirect('list_consultation', patient_id=consultation.patient.id)
+            return redirect('patients/update_utilisateur', user_id=consultation.patient.id)
     return redirect('not_authorized')

@@ -105,7 +105,6 @@
                 <th class="text-lg">Type</th>
                 {% if user.is_staff %}
                   <th></th>
-                  <th></th>
                 {% endif %}
               </tr>
             </thead>
@@ -118,24 +117,6 @@
                   {% if user.is_staff %}
                     <th>
                       <a class="btn btn-outline" href="{% url 'update_consultation' consultation.id %}">Modifier</a>
-                    </th>
-                    <th>
-                      <button class="btn btn-error" onclick="my_modal_2.showModal()">Supprimer</button>
-                      <dialog id="my_modal_2" class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                          <h3 class="font-bold text-lg">Supprimer une consultation</h3>
-                          <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ consultation.nom }} du {{ consultation.date }} ?</p>
-                          <div class="modal-action">
-                            <form method="dialog">
-                              <button class="btn btn-outline">Annuler</button>
-                            </form>
-                            <form method="post" action="{% url 'delete_consultation' consultation.id %}">
-                              {% csrf_token %}
-                              <button type="submit" class="btn btn-error">Supprimer</button>
-                            </form>
-                          </div>
-                        </div>
-                      </dialog>
                     </th>
                   {% endif %}
                 </tr>
