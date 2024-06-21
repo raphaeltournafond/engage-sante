@@ -68,5 +68,17 @@
     </div>
   </div>
   <a href="{% url 'list_patients' %}">Annuler</a>
+  <button class="btn btn-error" onclick="my_modal_5.showModal()">Supprimer</button>
+  <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Supprimer un Utilisateur</h3>
+      <p class="py-4">Êtes-vous sûr de vouloir supprimer {{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.username }} ?</p>
+      <div class="modal-action">
+        <form method="dialog" method="post" action="{% url 'delete_utilisateur' utilisateur.id %}">
+          <button class="btn btn-error">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
   <a href="{% url 'delete_utilisateur' utilisateur.id %}">Supprimer</a>
 {% endblock %}

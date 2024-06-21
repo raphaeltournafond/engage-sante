@@ -41,7 +41,7 @@ def delete_utilisateur(request, user_id):
     if request.user.is_staff or request.user.id == utilisateur.id:
         if request.method == 'POST':
             utilisateur.delete()
-            return redirect('list_patients')
+            return redirect('/')
         return render(request, 'patients/delete.html', {'utilisateur': utilisateur})
     return redirect('not_authorized')
 
