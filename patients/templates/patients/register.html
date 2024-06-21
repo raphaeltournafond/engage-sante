@@ -19,47 +19,47 @@
         <h1 class="text-5xl font-bold text-center">Enregistrement</h1>
         <p class="py-6 text-center">Utilisez ce formulaire pour créer un nouveau compte.</p>
       </div>
-      <div class="card min-w-fit shadow-2xl bg-base-200">
+      <div class="card shadow-2xl w-10/12 lg:w-1/2 max-w-xl lg:max-w-fit bg-base-200">
         <form class="card-body" method="post">
           {% csrf_token %}
           <div class="flex lg:flex-row flex-col">
             <div class="mx-10">
               <div class="form-control">
-                <label class="label"><span class="label-text">Nom de famille</span></label>
-                <input class="input input-bordered" type="text" name="last_name" maxlength="150" required />
+                <label class="label"><span class="text-2xl lg:label-text">Nom de famille</span></label>
+                <input class="input input-bordered input-lg" type="text" name="last_name" maxlength="150" required />
               </div>
               <div class="form-control">
-                <label class="label"><span class="label-text">Prénom</span></label>
-                <input class="input input-bordered" type="text" name="first_name" maxlength="150" required />
+                <label class="label"><span class="text-2xl lg:label-text">Prénom</span></label>
+                <input class="input input-bordered input-lg" type="text" name="first_name" maxlength="150" required />
               </div>
               <div class="form-control">
-                <label class="label"><span class="label-text">Email</span></label>
-                <input class="input input-bordered" type="email" name="email" maxlength="254" />
+                <label class="label"><span class="text-2xl lg:label-text">Email</span></label>
+                <input class="input input-bordered input-lg" type="email" name="email" maxlength="254" />
               </div>
             </div>
             <div class="mx-10">
               <div class="form-control">
-                <label class="label"><span class="label-text">N° et Rue</span></label>
-                <input class="input input-bordered" type="text" name="rue" maxlength="150" required/>
+                <label class="label"><span class="text-2xl lg:label-text">N° et Rue</span></label>
+                <input class="input input-bordered input-lg" type="text" name="rue" maxlength="150" required/>
               </div>
               <div class="form-control">
-                <label class="label"><span class="label-text">Code postal</span></label>
+                <label class="label"><span class="text-2xl lg:label-text">Code postal</span></label>
                 {{ form.cp }}
               </div>
               <div class="form-control">
-                <label class="label"><span class="label-text">Ville</span></label>
+                <label class="label"><span class="text-2xl lg:label-text">Ville</span></label>
                 {{ form.ville }}
               </div>
             </div>
           </div>
-          <div class="flex flex-row justify-between mx-10">
+          <div class="flex flex-col lg:flex-row justify-between mx-10">
             <div class="form-control">
-              <label class="label"><span class="label-text">Mot de passe</span></label>
-              <input type="password" class="input input-bordered" name="password1" required id="id_password1" />
+              <label class="label"><span class="text-2xl lg:label-text">Mot de passe</span></label>
+              <input type="password" class="input {% if form.errors %}input-error{% endif %} input-bordered input-lg" name="password1" required id="id_password1" />
             </div>
             <div class="form-control">
-              <label class="label"><span class="label-text">Confirmation</span></label>
-              <input type="password" class="input input-bordered" name="password2" required id="id_password2" />
+              <label class="label"><span class="text-2xl lg:label-text">Confirmation</span></label>
+              <input type="password" class="input {% if form.errors %}input-error{% endif %} input-bordered input-lg" name="password2" required id="id_password2" />
             </div>
           </div>
           <div class="form-control mt-12">

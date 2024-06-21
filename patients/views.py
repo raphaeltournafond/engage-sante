@@ -38,6 +38,7 @@ def update_utilisateur(request, user_id):
 @login_required
 def delete_utilisateur(request, user_id):
     utilisateur = get_object_or_404(Utilisateur, id=user_id)
+    print(utilisateur)
     if request.user.is_staff or request.user.id == utilisateur.id:
         if request.method == 'POST':
             utilisateur.delete()
@@ -69,8 +70,7 @@ def register_patient(request):
             else:
                 error_message = None
                 if 'password2' in form.errors.as_data():
-                    error_message = form.errors.as_data()['password2'][0].message
-                    print(error_message)
+                    error_message = form.errors.as_data()['password2'][0]
 
                 return render(request, 'patients/register.html', {'form': form, 'error_message': error_message})
         else:
@@ -92,8 +92,7 @@ def register_medecin(request):
             else:
                 error_message = None
                 if 'password2' in form.errors.as_data():
-                    error_message = form.errors.as_data()['password2'][0].message
-                    print(error_message)
+                    error_message = form.errors.as_data()['password2'][0]
 
                 return render(request, 'patients/register.html', {'form': form, 'error_message': error_message})
         else:
