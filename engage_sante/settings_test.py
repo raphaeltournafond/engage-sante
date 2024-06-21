@@ -91,11 +91,11 @@ LOGIN_URL = 'login'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'engage_sante_db'),
-        'USER': os.getenv('POSTGRES_USER', 'admin'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
+        'NAME': 'test_db',
+        'USER': 'test_user',
+        'PASSWORD': 'test_password',
         'HOST': 'test-db',
-        'PORT': os.getenv('POSTGRES_PORT', ''), # If left empty default port is 5432
+        'PORT': 5432, # If left empty default port is 5432
     }
 }
 
