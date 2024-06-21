@@ -5,11 +5,40 @@
 {% endblock %}
 
 {% block content %}
-  <h2>{% if form.instance.id %}Modifier la Consultation{% else %}Nouvelle Consultation{% endif %} pour {{ patient.last_name }} {{ patient.first_name }}</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Valider</button>
-  </form>
-  <a href="{% url 'list_consultation' patient.id %}">Retour aux Consultations</a>
+  <div class="flex flex-col justify-center items-center p-10">
+    <div class="lg:text-left lg:w-full max-w-sm pb-10">
+      <h2 class="text-3xl font-bold text-center">{% if form.instance.id %}Modifier la Consultation de{% else %}Nouvelle Consultation pour{% endif %} {{ patient.last_name }} {{ patient.first_name }}</h2>
+    </div>
+    <div class="card shadow-2xl w-10/12 lg:w-full max-w-xl lg:max-w-fit bg-base-200">
+      <form class="card-body" method="post">
+        {% csrf_token %}
+        <div class="flex lg:flex-row flex-col">
+          <div class="mx-10">
+            <div class="form-control">
+              <label class="label"><span class="text-2xl lg:label-text">Nom</span></label>
+              <input class="input input-bordered input-lg" type="text" name="nom" value="{% if form.instance.id %}{{ form.instance.nom }}{% endif %}" maxlength="100" required />
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="text-2xl lg:label-text">Détails</span></label>
+              <textarea name="description" class="textarea textarea-bordered input-lg w-full h-36" cols="40" required>{% if form.instance.id %}{{ form.instance.description }}{% endif %}</textarea>
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="text-2xl lg:label-text">Date</span></label>
+              <input class="input input-bordered input-lg" type="datetime-local" name="date" value="{% if form.instance.id %}{{ form.instance.date|date:'Y-m-d\\TH:i' }}{% endif %}" required>
+            </div>
+            <div class="form-control">
+              <label class="label"><span class="text-2xl lg:label-text">Type de consultation</span></label>
+              <select class="select select-bordered input-lg" name="type" required aria-invalid="true">
+                <option {% if form.instance.id and form.instance.type == 'Visite' %}selected{% endif %} value="Visite">Visite</option>
+                <option {% if form.instance.id and form.instance.type == 'Suivi' %}selected{% endif %} value="Suivi">Suivi</option>
+                <option {% if form.instance.id and form.instance.type == 'Operation' %}selected{% endif %} value="Operation">Opération</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-control mt-12">
+          <button class="btn btn-accent">Enregistrer</button>
+        </div>
+      </form>
+    </div>
 {% endblock %}
