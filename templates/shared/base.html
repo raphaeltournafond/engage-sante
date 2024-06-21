@@ -7,7 +7,7 @@
         Engage Santé
       {% endblock %}
     </title>
-    <link rel="stylesheet" href="{% static 'css/engage-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/engage-ui.css' %}" type="text/css" />
     {% block extra_head %}
 
     {% endblock %}
@@ -48,7 +48,7 @@
     </main>
 
     <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded mt-10">
-      <img src="../static/images/logo.svg" alt="Logo" class="w-52" />
+      <img src={% static "images/logo.svg" %} alt="Logo" class="w-52" />
       <nav class="grid grid-flow-col gap-4">
         <a href="/" class="link link-hover">Accueil</a>
         <a href="/#about" class="link link-hover">À propos</a>
