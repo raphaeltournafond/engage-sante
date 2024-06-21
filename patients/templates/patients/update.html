@@ -72,29 +72,31 @@
         </div>
         <div class="mt-10 w-1/2 justify-center items-center flex flex-row space-x-4">
           <a class="btn btn-outline" href="{% url 'list_patients' %}">Retour</a>
-          <button class="btn btn-error" onclick="user_delete_modal.showModal()">Supprimer</button>
-          <dialog id="user_delete_modal" class="modal modal-bottom sm:modal-middle">
-            <div class="modal-box">
-              <h3 class="font-bold text-lg">Supprimer un utilisateur</h3>
-              <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
-              <div class="modal-action">
-                <form method="dialog">
-                  <button class="btn btn-outline">Annuler</button>
-                </form>
-                <form method="post" action="{% url 'delete_utilisateur' utilisateur.id %}">
-                  {% csrf_token %}
-                  <button type="submit" class="btn btn-error">Supprimer</button>
-                </form>
+          {% if user.is_staff %}
+            <button class="btn btn-error" onclick="user_delete_modal.showModal()">Supprimer</button>
+            <dialog id="user_delete_modal" class="modal modal-bottom sm:modal-middle">
+              <div class="modal-box">
+                <h3 class="font-bold text-lg">Supprimer un utilisateur</h3>
+                <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
+                <div class="modal-action">
+                  <form method="dialog">
+                    <button class="btn btn-outline">Annuler</button>
+                  </form>
+                  <form method="post" action="{% url 'delete_utilisateur' utilisateur.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-error">Supprimer</button>
+                  </form>
+                </div>
               </div>
-            </div>
-          </dialog>
+            </dialog>
+          {% endif %}
           <a class="btn btn-info" href="{% url 'info_utilisateur' utilisateur.id %}">Voir le profil</a>
         </div>
       </div>
 
       <!-- Espace consultations -->
 
-      {% if not utilisateur.is_staff %}
+      {% if user.is_staff %}
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-3xl my-10">Prochaines consultations</h2>
           <a class="btn btn-accent mb-5" href="{% url 'create_consultation' utilisateur.id %}">Nouvelle consultation</a>

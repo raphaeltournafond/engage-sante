@@ -28,9 +28,7 @@
           <p class="text-lg">
             {{ utilisateur.rue }},<br /> {{ utilisateur.cp }} {{ utilisateur.ville }}
           </p>
-          {% if user.is_staff %}
-            <a class="btn btn-accent my-5" href="{% url 'update_utilisateur' utilisateur.id %}">Modifier le profil</a>
-          {% endif %}
+          <a class="btn btn-accent my-5" href="{% url 'update_utilisateur' utilisateur.id %}">Modifier le profil</a>
         </div>
       </div>
 
