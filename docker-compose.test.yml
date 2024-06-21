@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: python /app/manage.py runserver 0.0.0.0:${PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/app
+    depends_on:
+      - test-db
+
+  test-db:
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+
+volumes:
+  postgres_data:
