@@ -19,7 +19,7 @@
         <h1 class="text-5xl font-bold text-center">Mise à jour</h1>
         <p class="py-6 text-center">Utilisez ce formulaire pour mettre à jour un compte.</p>
       </div>
-      <div class="card shadow-2xl w-10/12 lg:w-1/2 max-w-xl bg-base-200">
+      <div class="card shadow-2xl w-10/12 lg:w-1/2 max-w-xl lg:max-w-fit bg-base-200">
         <form class="card-body" method="post">
           {% csrf_token %}
           <div class="flex lg:flex-row flex-col">
@@ -71,7 +71,7 @@
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <h3 class="font-bold text-lg">Supprimer un Utilisateur</h3>
-            <p class="py-4">Êtes-vous sûr de vouloir supprimer {{ utilisateur.last_name }} {{ utilisateur.first_name }} - {{ utilisateur.username }} ?</p>
+            <p class="py-4">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
             <div class="modal-action">
               <form method="dialog">
                 <button class="btn btn-outline">Annuler</button>

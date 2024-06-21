@@ -29,7 +29,7 @@ def update_utilisateur(request, user_id):
             form = UtilisateurUpdateForm(request.POST, instance=utilisateur)
             if form.is_valid():
                 form.save()
-                return render(request, 'patients/info.html', {'utilisateur': utilisateur})
+                return redirect('info_utilisateur', user_id=utilisateur.id)
         else:
             form = UtilisateurUpdateForm(instance=utilisateur)
         return render(request, 'patients/update.html', {'form': form, 'utilisateur': utilisateur})
@@ -38,12 +38,10 @@ def update_utilisateur(request, user_id):
 @login_required
 def delete_utilisateur(request, user_id):
     utilisateur = get_object_or_404(Utilisateur, id=user_id)
-    print(utilisateur)
     if request.user.is_staff or request.user.id == utilisateur.id:
         if request.method == 'POST':
             utilisateur.delete()
-            return redirect('/')
-        return render(request, 'patients/delete.html', {'utilisateur': utilisateur})
+            return redirect('list_patients')
     return redirect('not_authorized')
 
 class CustomLoginView(LoginView):
@@ -66,7 +64,7 @@ def register_patient(request):
                 user.is_staff = False
                 user.save()
                 login(request, user)
-                return render(request, 'patients/info.html', {'utilisateur': user})
+                return redirect('info_utilisateur', user_id=user.id)
             else:
                 error_message = None
                 if 'password2' in form.errors.as_data():

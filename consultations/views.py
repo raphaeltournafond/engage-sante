@@ -49,5 +49,4 @@ def delete_consultation(request, id):
         if request.method == 'POST':
             consultation.delete()
             return redirect('list_consultation', patient_id=consultation.patient.id)
-        return render(request, 'consultations/delete.html', {'consultation': consultation})
     return redirect('not_authorized')

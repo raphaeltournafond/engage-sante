@@ -1,7 +1,7 @@
 {% extends 'shared/base.html' %}
 
 {% block title %}
-  Liste Utilisateur
+  Liste Utilisateur | Engage Santé
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 
     <div class="flex flex-col items-center mb-10">
       <h1 class="text-3xl font-bold m-10">Liste des Patients</h1>
-      <a href="{% url 'register_patient' %}" class="btn btn-info">Créer un nouveau patient</a>
+      <a href="{% url 'register_patient' %}" class="btn btn-accent">Créer un nouveau patient</a>
     </div>
 
     <div class="overflow-x-auto">
@@ -27,11 +27,11 @@
           {% for patient in patients %}
             <tr class="hover:bg-base-200">
               <th>{{ patient.last_name|upper }} {{ patient.first_name }}</th>
-              <th>Prochaine consultation</th>
+              <th>{{ patient.prochaine }}</th>
               <th>{{ patient.email }}</th>
               <th>{{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}</th>
               <th>
-                <a class="btn btn-outline" href="{% url 'update_utilisateur' patient.id %}">Modifier</a>
+                <a class="btn btn-outline" href="{% url 'update_utilisateur' patient.id %}">Informations</a>
               </th>
             </tr>
           {% endfor %}
