@@ -17,9 +17,6 @@
         </div>
         <div>
           <h1 class="text-3xl font-bold mb-2">Informations de l'utilisateur</h1>
-          {% if user.is_staff %}
-            <a class="btn btn-accent my-5" href="{% url 'update_utilisateur' utilisateur.id %}">Modifier le profil</a>
-          {% endif %}
           <p class="text-xl">{{ utilisateur.last_name }} {{ utilisateur.first_name }}</p>
           <br />
           <p class="text-lg">
@@ -31,6 +28,9 @@
           <p class="text-lg">
             {{ utilisateur.rue }},<br /> {{ utilisateur.cp }} {{ utilisateur.ville }}
           </p>
+          {% if user.is_staff %}
+            <a class="btn btn-accent my-5" href="{% url 'update_utilisateur' utilisateur.id %}">Modifier le profil</a>
+          {% endif %}
         </div>
       </div>
 
@@ -38,14 +38,14 @@
 
       <div class="flex flex-col justify-center items-center">
         <h2 class="text-3xl my-10">Prochaines consultations</h2>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto p-10">
           <table class="table">
             <thead>
               <tr>
                 <th class="text-lg">Nom</th>
                 <th class="text-lg">Date</th>
                 <th class="text-lg">Type</th>
-                <th class="text-lg">Description</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
