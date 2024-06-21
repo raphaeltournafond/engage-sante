@@ -25,6 +25,7 @@ def info_utilisateur(request, user_id):
 def update_utilisateur(request, user_id):
     utilisateur = get_object_or_404(Utilisateur, id=user_id)
     if request.user.is_staff or request.user.id == utilisateur.id:
+        consultations = utilisateur.consultations.all()
         if request.method == 'POST':
             form = UtilisateurUpdateForm(request.POST, instance=utilisateur)
             if form.is_valid():
@@ -32,7 +33,7 @@ def update_utilisateur(request, user_id):
                 return redirect('info_utilisateur', user_id=utilisateur.id)
         else:
             form = UtilisateurUpdateForm(instance=utilisateur)
-        return render(request, 'patients/update.html', {'form': form, 'utilisateur': utilisateur})
+        return render(request, 'patients/update.html', {'form': form, 'utilisateur': utilisateur, 'consultations': consultations})
     return redirect('not_authorized')
 
 @login_required

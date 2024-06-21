@@ -14,75 +14,113 @@
 
 {% block content %}
   <div class="min-h-screen pt-20">
-    <div class="flex flex-col justify-center items-center">
-      <div class="lg:text-left lg:w-1/2 max-w-sm">
-        <h1 class="text-5xl font-bold text-center">Mise à jour</h1>
-        <p class="py-6 text-center">Utilisez ce formulaire pour mettre à jour un compte.</p>
+    <div class="flex flex-col lg:flex-row items-start justify-center space-x-5">
+      <div class="flex flex-col justify-center items-center">
+        <div class="lg:text-left lg:w-full max-w-sm">
+          <h1 class="text-5xl font-bold text-center">Mise à jour</h1>
+          <p class="py-6 text-center">Utilisez ce formulaire pour mettre à jour un compte.</p>
+        </div>
+        <div class="card shadow-2xl w-10/12 lg:w-full max-w-xl lg:max-w-fit bg-base-200">
+          <form class="card-body" method="post">
+            {% csrf_token %}
+            <div class="flex lg:flex-row flex-col">
+              <div class="mx-10">
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">Nom de famille</span></label>
+                  <input class="input input-bordered input-lg" type="text" name="last_name" value="{{ utilisateur.last_name }}" maxlength="150" required />
+                </div>
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">Prénom</span></label>
+                  <input class="input input-bordered input-lg" type="text" name="first_name" value="{{ utilisateur.first_name }}" maxlength="150" required />
+                </div>
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">Email</span></label>
+                  <input class="input input-bordered input-lg" type="email" name="email" value="{{ utilisateur.email }}" maxlength="254" />
+                </div>
+              </div>
+              <div class="mx-10">
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">N° et Rue</span></label>
+                  <input class="input input-bordered input-lg" type="text" name="rue" value="{{ utilisateur.rue }}" maxlength="150" required />
+                </div>
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">Code postal</span></label>
+                  {{ form.cp }}
+                </div>
+                <div class="form-control">
+                  <label class="label"><span class="text-2xl lg:label-text">Ville</span></label>
+                  {{ form.ville }}
+                </div>
+              </div>
+            </div>
+            <div class="form-control mt-12">
+              <button class="btn btn-accent">Enregistrer</button>
+            </div>
+            {% if form.errors %}
+              <div role="alert" class="alert alert-error mt-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{ error_message }}</span>
+              </div>
+            {% endif %}
+          </form>
+        </div>
+        <div class="mt-10 w-1/2 justify-center items-center flex flex-row space-x-4">
+          <a class="btn btn-outline" href="{% url 'list_patients' %}">Retour</a>
+          <button class="btn btn-error" onclick="my_modal_5.showModal()">Supprimer</button>
+          <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <h3 class="font-bold text-lg">Supprimer un Utilisateur</h3>
+              <p class="py-4">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
+              <div class="modal-action">
+                <form method="dialog">
+                  <button class="btn btn-outline">Annuler</button>
+                </form>
+                <form method="post" action="{% url 'delete_utilisateur' utilisateur.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-error">Supprimer</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+        </div>
       </div>
-      <div class="card shadow-2xl w-10/12 lg:w-1/2 max-w-xl lg:max-w-fit bg-base-200">
-        <form class="card-body" method="post">
-          {% csrf_token %}
-          <div class="flex lg:flex-row flex-col">
-            <div class="mx-10">
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">Nom de famille</span></label>
-                <input class="input input-bordered input-lg" type="text" name="last_name" value="{{ utilisateur.last_name }}" maxlength="150" required />
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">Prénom</span></label>
-                <input class="input input-bordered input-lg" type="text" name="first_name" value="{{ utilisateur.first_name }}" maxlength="150" required />
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">Email</span></label>
-                <input class="input input-bordered input-lg" type="email" name="email" value="{{ utilisateur.email }}" maxlength="254" />
-              </div>
-            </div>
-            <div class="mx-10">
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">N° et Rue</span></label>
-                <input class="input input-bordered input-lg" type="text" name="rue" value="{{ utilisateur.rue }}" maxlength="150" required />
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">Code postal</span></label>
-                {{ form.cp }}
-              </div>
-              <div class="form-control">
-                <label class="label"><span class="text-2xl lg:label-text">Ville</span></label>
-                {{ form.ville }}
-              </div>
-            </div>
-          </div>
-          <div class="form-control mt-12">
-            <button class="btn btn-accent">Enregistrer</button>
-          </div>
-          {% if form.errors %}
-            <div role="alert" class="alert alert-error mt-5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{{ error_message }}</span>
-            </div>
-          {% endif %}
-        </form>
-      </div>
-      <div class="mt-10 w-1/2 justify-center items-center flex flex-row space-x-4">
-        <a class="btn btn-outline" href="{% url 'list_patients' %}">Retour</a>
-        <button class="btn btn-error" onclick="my_modal_5.showModal()">Supprimer</button>
-        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <h3 class="font-bold text-lg">Supprimer un Utilisateur</h3>
-            <p class="py-4">Êtes-vous sûr de vouloir supprimer l'utilisateur {{ utilisateur.last_name }} {{ utilisateur.first_name }} ?</p>
-            <div class="modal-action">
-              <form method="dialog">
-                <button class="btn btn-outline">Annuler</button>
-              </form>
-              <form method="post" action="{% url 'delete_utilisateur' utilisateur.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-error">Supprimer</button>
-              </form>
-            </div>
-          </div>
-        </dialog>
+      <div class="flex flex-col justify-center items-center">
+        <h2 class="text-3xl my-10">Prochaines consultations</h2>
+        <a class="btn btn-accent mb-5" href="{% url 'create_consultation' utilisateur.id %}">Nouvelle consultation</a>
+        <div class="overflow-x-auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-lg">Nom</th>
+                <th class="text-lg">Date</th>
+                <th class="text-lg">Type</th>
+                {% if user.is_staff %}
+                  <th></th>
+                  <th></th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for consultation in consultations %}
+                <tr class="hover:bg-base-200">
+                  <th>{{ consultation.nom }}</th>
+                  <th>{{ consultation.date }}</th>
+                  <th>{{ consultation.type }}</th>
+                  {% if user.is_staff %}
+                    <th>
+                      <a class="btn btn-outline" href="{% url 'update_consultation' consultation.id %}">Modifier</a>
+                    </th>
+                    <th>
+                      <a class="btn btn-error" href="{% url 'delete_consultation' consultation.id %}">Supprimer</a>
+                    </th>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

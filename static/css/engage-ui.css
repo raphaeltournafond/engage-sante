@@ -3089,6 +3089,12 @@ html {
   margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -3564,6 +3570,10 @@ html {
 
   .lg\:w-3\/5 {
     width: 60%;
+  }
+
+  .lg\:w-full {
+    width: 100%;
   }
 
   .lg\:min-w-fit {
