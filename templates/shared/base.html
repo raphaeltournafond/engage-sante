@@ -24,7 +24,7 @@
               <div class="px-5">
                 Bienvenue, <a  href="{% url 'info_utilisateur' user.id %}" class="cursor-pointer tooltip tooltip-bottom btn-link text-base-content" data-tip="Voir mon profil">{{ user.last_name }} {{ user.first_name }}</a>
                 {% if user.is_staff %}
-                <div class="badge badge-warning mr-5">Staff</div>
+                <div class="badge badge-neutral mr-5">Médecin</div>
                 <a href="/patients/" class="btn btn-outline">Liste des patients</a>
                 {% endif %}
               </div>
