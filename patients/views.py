@@ -6,11 +6,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import CustomUtilisateurCreationForm, UtilisateurUpdateForm
 from .models import Utilisateur
+from django.db.models import Min
 
 @login_required
 def list_patients(request):
     if request.user.is_staff:
-        patients = Utilisateur.objects.filter(is_medecin=False, is_staff=False, is_superuser=False)
+        patients = Utilisateur.objects.filter(is_medecin=False, is_staff=False, is_superuser=False).annotate(oldest_consultation=Min('consultations__date'))
+        patients = patients.order_by('oldest_consultation', 'last_name', 'first_name')
         return render(request, 'patients/list.html', {'patients': patients})
     return redirect('not_authorized')
 

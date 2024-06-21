@@ -115,7 +115,7 @@
                 {% for consultation in consultations %}
                   <tr class="hover:bg-base-200">
                     <th>{{ consultation.nom }}</th>
-                    <th>{{ consultation.date }}</th>
+                    <th>le {{ consultation.date|date:"j-m-Y à H:i" }}</th>
                     <th>{{ consultation.type }}</th>
                     {% if user.is_staff %}
                       <th>
@@ -127,7 +127,7 @@
                         <dialog id="my_modal_{{ forloop.counter }}" class="modal modal-bottom sm:modal-middle">
                           <div class="modal-box">
                             <h3 class="font-bold text-lg">Supprimer une consultation</h3>
-                            <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ consultation.nom }} du {{ consultation.date }} ?</p>
+                            <p class="py-4 font-normal text-base">Êtes-vous sûr de vouloir supprimer la consultation {{ consultation.nom }} du {{ consultation.date|date:"j-m-Y à H:i" }} ?</p>
                             <div class="modal-action">
                               <form method="dialog">
                                 <button class="btn btn-outline">Annuler</button>

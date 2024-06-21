@@ -27,7 +27,7 @@
           {% for patient in patients %}
             <tr class="hover:bg-base-200">
               <th>{{ patient.last_name|upper }} {{ patient.first_name }}</th>
-              <th>{{ patient.prochaine }}</th>
+              <th>{% if patient.oldest_consultation %}le {{ patient.oldest_consultation|date:"j-m-Y à H:i" }}{% else %}Aucune{% endif %}</th>
               <th>{{ patient.email }}</th>
               <th>{{ patient.rue }}, {{ patient.cp }} {{ patient.ville }}</th>
               <th>
