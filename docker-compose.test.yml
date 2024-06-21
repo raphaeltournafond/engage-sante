@@ -9,6 +9,8 @@ services:
       - .:/app
     depends_on:
       - test-db
+    environment:
+      - DJANGO_SETTINGS_MODULE=engage_sante.settings_test
 
   test-db:
     image: postgres:${POSTGRES_VERSION}
