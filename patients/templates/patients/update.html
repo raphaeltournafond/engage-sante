@@ -15,7 +15,6 @@
 {% block content %}
   <div class="min-h-screen pt-20">
     <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center space-x-5">
-
       <!-- Espace fromulaire de modifications -->
 
       <div class="flex flex-col justify-center items-center">
@@ -92,39 +91,41 @@
       </div>
 
       <!-- Espace consultations -->
-
-      <div class="flex flex-col justify-center items-center">
-        <h2 class="text-3xl my-10">Prochaines consultations</h2>
-        <a class="btn btn-accent mb-5" href="{% url 'create_consultation' utilisateur.id %}">Nouvelle consultation</a>
-        <div class="overflow-x-auto">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-lg">Nom</th>
-                <th class="text-lg">Date</th>
-                <th class="text-lg">Type</th>
-                {% if user.is_staff %}
-                  <th></th>
-                {% endif %}
-              </tr>
-            </thead>
-            <tbody>
-              {% for consultation in consultations %}
-                <tr class="hover:bg-base-200">
-                  <th>{{ consultation.nom }}</th>
-                  <th>{{ consultation.date }}</th>
-                  <th>{{ consultation.type }}</th>
+       
+      {% if not utilisateur.is_staff %}
+        <div class="flex flex-col justify-center items-center">
+          <h2 class="text-3xl my-10">Prochaines consultations</h2>
+          <a class="btn btn-accent mb-5" href="{% url 'create_consultation' utilisateur.id %}">Nouvelle consultation</a>
+          <div class="overflow-x-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-lg">Nom</th>
+                  <th class="text-lg">Date</th>
+                  <th class="text-lg">Type</th>
                   {% if user.is_staff %}
-                    <th>
-                      <a class="btn btn-outline" href="{% url 'update_consultation' consultation.id %}">Modifier</a>
-                    </th>
+                    <th></th>
                   {% endif %}
                 </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {% for consultation in consultations %}
+                  <tr class="hover:bg-base-200">
+                    <th>{{ consultation.nom }}</th>
+                    <th>{{ consultation.date }}</th>
+                    <th>{{ consultation.type }}</th>
+                    {% if user.is_staff %}
+                      <th>
+                        <a class="btn btn-outline" href="{% url 'update_consultation' consultation.id %}">Modifier</a>
+                      </th>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
