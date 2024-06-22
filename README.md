@@ -44,8 +44,8 @@ Puis aller sur <http://localhost:8000/connexion/>
 
 ## Documentations
 
-[Document d'usage](DOCS/USAGE.md) de l'application avec screenshots
-[Spécification technique](DOCS/SPECIFICATIONS.md) de l'application
+* [Document d'usage](DOCS/USAGE.md) de l'application avec screenshots
+* [Spécification technique](DOCS/SPECIFICATIONS.md) de l'application
 
 ## URLS
 
