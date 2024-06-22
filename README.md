@@ -42,11 +42,13 @@ sh medecin.sh # Pour créer un médecin qui pourra visualiser la liste des patie
 
 Puis aller sur <http://localhost:8000/connexion/>
 
+## Documentations
+
+[Document d'usage](DOCS/USAGE.md) de l'application avec screenshots
+
 ## URLS
 
 Voici la liste des urls utiles
-
-Here's the information transformed into a markdown table format:
 
 ### Patients
 
