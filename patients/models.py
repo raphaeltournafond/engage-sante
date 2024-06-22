@@ -12,15 +12,16 @@ def generate_unique_username(last_name, first_name, cache=[]):
     return unique_username
 
 class Utilisateur(AbstractUser):
-    # Champs relatifs a l adresse
+    # Champs relatifs a l'adresse
     rue = models.CharField(max_length=100)
     cp = models.CharField(max_length=50)
     ville = models.CharField(max_length=50)
-    # Utilise pour savoir si cest un medecin
+    # Utilisé pour savoir si c'est un medecin
     is_medecin = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.pk and not self.username:
+            # Génération d'un username unique
             self.username = generate_unique_username(self.last_name, self.first_name)
             if self.is_medecin:
                 self.is_staff = True

@@ -1,5 +1,6 @@
 name: engage_sante
 services:
+  # Base de donnée Postgres
   db:
     image: postgres:${POSTGRES_VERSION}
     volumes:
@@ -11,6 +12,7 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
 
+  # Container d'application Django
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:${PORT}

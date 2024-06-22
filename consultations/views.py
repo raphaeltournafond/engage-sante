@@ -52,6 +52,6 @@ def delete_consultation(request, id):
         consultation = get_object_or_404(Consultation, id=id)
         consultation.delete()
         response = HttpResponse(status=204)
-        response['HX-Trigger'] = 'delete-consultation'
+        response['HX-Trigger'] = 'delete-consultation' # Signal HTMX
         return response
     return HttpResponse({'error': 'Vous ne pouvez pas supprimer cette consultation.'}, status=403)
