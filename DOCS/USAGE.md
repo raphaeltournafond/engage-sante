@@ -104,3 +104,15 @@ Une fois le compte créé et les informations valides l'utilisateur et redirigé
 **Fonctionnalités** :
 
 * Afficher/Modifier un patient
+
+## Screenshots mobile
+
+L'application est responsive et permet donc un affichage sur mobile.
+
+![Screenshots de l'app sur mobile'](images/mobile.png "App sur mobile")
+
+## Theme sombre
+
+L'application dispose aussi d'un theme sombre.
+
+![Screenshot du theme sombre'](images/sombre.png "Theme sombre")
