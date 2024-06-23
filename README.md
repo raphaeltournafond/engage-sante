@@ -4,7 +4,7 @@ Engage-Santé est une application web destinée à la gestion de patientèle et 
 
 ## Installation
 
-> Nécessite Docker et Docker Compose
+> Nécessite `Docker` et `Docker Compose`
 
 Créer un fichier `.env` dont voici un exemple pour usage local :
 
@@ -33,8 +33,7 @@ Pour commencer à utiliser l'application il est possible d'utiliser les commande
 
 ```bash
 cd scripts
-# Optionel
-sh superuser.sh # Pour créer un super user et accéder à localhost:PORT/admin/
+sh superuser.sh # [Optionel] Pour créer un super user et accéder à localhost:PORT/admin/
 cd commands
 sh patients.sh N # Avec N le nombre de patients aléatoires à créer
 sh medecin.sh # Pour créer un médecin qui pourra visualiser la liste des patients et accéder aux actions staff
@@ -76,3 +75,11 @@ Voici la liste des urls utiles
 | `patients/<int:patient_id>/consultations/creer/` [name='create_consultation'] | Staff only           | Permet de créer une nouvelle consultation pour un patient |
 | `consultations/<int:id>/modifier/` [name='update_consultation'] | Staff only           | Permet de modifier une consultation                 |
 | `consultations/<int:id>/supprimer/` [name='delete_consultation'] | Staff only           | Permet de supprimer une consultation                |
+
+## Contributions
+
+Voir [`CONTRIBUTING`](./CONTRIBUTING)
+
+## License
+
+Voir [`LICENSE`](./LICENSE)

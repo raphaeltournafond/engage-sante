@@ -1,0 +1,10 @@
+# CONTRIBUTING
+
+> Nécessite `Node.js`
+
+Pour développer de nouvelles features ou tester des choses dans le code, installer les packages et lancer le serveur Node.js
+
+```bash
+npm i
+npm run dev
+```
